@@ -12,7 +12,7 @@ export const Header = () => {
          <LoginButton activeOpacity={0.3}>
             <ButtonText>{'login'}</ButtonText>
          </LoginButton>
-         <Title>Hello</Title>
+         <Title>Hello world</Title>
          <Title isLastChild>Last element</Title>
       </Container>
    );
