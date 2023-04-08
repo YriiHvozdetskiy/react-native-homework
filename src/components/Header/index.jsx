@@ -10,7 +10,7 @@ export const Header = () => {
    return (
       <Container>
          <LoginButton activeOpacity={0.3}>
-            <ButtonText>{'login'}</ButtonText>
+            <ButtonText>Login</ButtonText>
          </LoginButton>
          <Title>Hello world</Title>
          <Title isLastChild>Last element</Title>
