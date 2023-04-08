@@ -3,7 +3,7 @@ import {
    LoginButton,
    Title,
    ButtonText,
-} from './Header.styled';
+} from './styled';
 
 export const Header = () => {
 
