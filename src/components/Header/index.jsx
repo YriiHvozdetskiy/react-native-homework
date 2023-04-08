@@ -15,5 +15,5 @@ export const Header = () => {
          <Title>Hello world</Title>
          <Title isLastChild>Last element</Title>
       </Container>
-   );
-};
+   )
+}
