@@ -7,5 +7,5 @@ export const Container = styled.View`
 export const StyledBackground = styled.ImageBackground`
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 `;

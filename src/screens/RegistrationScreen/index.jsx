@@ -2,10 +2,9 @@ import {
    Container, StyledBackground,
 } from './styled';
 import {
-   ImageBackground,
-   Text,
    TouchableWithoutFeedback,
 } from 'react-native';
+import {Form} from '@components/Form';
 
 export const RegistrationScreen = () => {
 
@@ -14,9 +13,8 @@ export const RegistrationScreen = () => {
          <TouchableWithoutFeedback
 
          >
-            <StyledBackground
-               source={require('../../assets/photo-bg.jpg')}
-            >
+            <StyledBackground source={require('../../assets/photo-bg.jpg')}>
+               <Form/>
             </StyledBackground>
          </TouchableWithoutFeedback>
       </Container>
