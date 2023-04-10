@@ -9,6 +9,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
+  font-family: 'Montserrat-Medium';
   text-align: center;
   font-size: 20px;
   margin-bottom: 20px;
@@ -25,4 +26,12 @@ export const LoginButton = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   color: #fff;
+`
+//fontFamily: 'Roboto-Medium';
+//font-family: 'Montserrat-Medium';
+
+export  const TitleCustomFont = styled.Text`
+  font-family: 'Montserrat-Medium';
+  font-size: 30px;
+
 `
