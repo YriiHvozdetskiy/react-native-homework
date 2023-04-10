@@ -1,11 +1,11 @@
 import {
    Container,
 } from './styled';
-import {Title} from '@components/Title';
 import {Formik} from 'formik';
-import {Button, TextInput, View, StyleSheet, Text} from 'react-native';
+import {Button, TextInput, StyleSheet, Text} from 'react-native';
 import * as yup from 'yup';
-import React from 'react';
+import React, {useState} from 'react';
+import {Input} from '@components/Input';
 
 const validationSchema = yup.object().shape({
    email: yup.string().email('Please enter a valid email').required('Email is required'),
@@ -13,45 +13,48 @@ const validationSchema = yup.object().shape({
 });
 
 export const Form = () => {
+   const [isFocused, setIsFocused] = useState(false);
 
    const handleSubmit = (values) => {
       console.log(values);
    };
 
    return (
-      <Container>
-         <Title text={'Реєстрація'}/>
-         <Formik
-            initialValues={{email: '', password: ''}}
-            onSubmit={handleSubmit}
-            validationSchema={validationSchema}
-         >
-            {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
-               <View>
-                  <TextInput
-                     style={styles.input}
-                     onChangeText={handleChange('email')}
-                     onBlur={handleBlur('email')}
-                     value={values.email}
-                     placeholder="Email"
-                     keyboardType="email-address"
-                     autoCapitalize="none"
-                  />
-                  {touched.email && errors.email && <Text style={styles.error}>{errors.email}</Text>}
-                  <TextInput
-                     style={styles.input}
-                     onChangeText={handleChange('password')}
-                     onBlur={handleBlur('password')}
-                     value={values.password}
-                     placeholder="Password"
-                     secureTextEntry
-                  />
-                  {touched.password && errors.password && <Text style={styles.error}>{errors.password}</Text>}
-                  <Button title="Submit" onPress={handleSubmit}/>
-               </View>
-            )}
-         </Formik>
-      </Container>
+      <Formik
+         initialValues={{email: '', password: ''}}
+         onSubmit={handleSubmit}
+         validationSchema={validationSchema}
+      >
+         {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+            <Container>
+               <Input
+                  handleChange={handleChange('email')}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  value={values?.email}
+                  placeholder={'Email'}
+                  boole={touched.email && errors.email}
+                  errors={errors}
+                  isFocused={isFocused}
+                  keyboardType={'email-address'}
+                  autoCapitalize={'none'}
+               />
+               <Input
+                  handleChange={handleChange('password')}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  value={values?.password}
+                  boole={touched.password && errors.password}
+                  errors={errors}
+                  isFocused={isFocused}
+                  autoCapitalize={'none'}
+                  placeholder={'Password'}
+                  secureTextEntry={true}
+               />
+               <Button title="Submit" onPress={handleSubmit}/>
+            </Container>
+         )}
+      </Formik>
    )
 }
 

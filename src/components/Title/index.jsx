@@ -2,9 +2,9 @@ import {
    TitleText,
 } from './styled';
 
-export const Title = ({text}) => {
+export const Title = ({text, distance}) => {
 
    return (
-      <TitleText>{text}</TitleText>
+      <TitleText distance={distance}>{text}</TitleText>
    )
 }
