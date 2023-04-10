@@ -1,10 +1,10 @@
 import {AppNavigator} from './src/navigation';
-import {View} from 'react-native';
+import {Platform, View} from 'react-native';
 
 export default function App() {
 
    return (
-      <View>
+      <View style={Platform.OS === "ios" ? null : {paddingTop: 30, backgroundColor: '#000'}}>
          <AppNavigator/>
       </View>
    );

@@ -4,6 +4,7 @@ import {useFonts} from 'expo-font';
 import {useCallback} from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import {Text} from 'react-native';
+import {RegistrationScreen} from '@screens/RegistrationScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,8 +25,8 @@ export const AppNavigator = () => {
 
    return (
       <Container onLayout={onLayoutRootView}>
-         <Header/>
-         {/*<Text>test</Text>*/}
+         {/*<Header/>*/}
+         <RegistrationScreen/>
       </Container>
    )
 }
