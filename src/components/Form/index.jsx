@@ -25,8 +25,6 @@ export const Form = (props) => {
    const handleSubmit = async (values) => {
       console.log(values);
 
-      await setIsShowKeyboard(prevState => !prevState)
-
       Keyboard.dismiss();
    };
    const keyboardHiddenHandler = () => {

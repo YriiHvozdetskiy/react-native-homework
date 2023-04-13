@@ -21,6 +21,7 @@ export const RegistrationScreen = () => {
    const keyboardHiddenHandler = () => {
       Keyboard.dismiss();
    };
+console.log('IsShowKeyboard',IsShowKeyboard)
 
    return (
       <Container>
