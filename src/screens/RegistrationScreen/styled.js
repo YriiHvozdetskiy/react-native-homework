@@ -7,8 +7,8 @@ export const Container = styled.View`
 export const StyledBackground = styled.ImageBackground`
   flex: 1;
   align-items: center;
-  justify-content: center;
-`;
+  justify-content: flex-end;
+ `;
 
 export const Wrapper = styled.View`
   background: #FFFFFF;
@@ -17,4 +17,5 @@ export const Wrapper = styled.View`
   padding: 92px 16px 80px;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
+  justify-content: flex-end;
 `

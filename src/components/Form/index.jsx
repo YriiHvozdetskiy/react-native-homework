@@ -2,10 +2,10 @@ import {
    Container,
 } from './styled';
 import {Formik} from 'formik';
-import {Button, TextInput, StyleSheet, Text} from 'react-native';
 import * as yup from 'yup';
 import React, {useState} from 'react';
 import {Input} from '@components/Input';
+import {Button} from '@components/Button';
 
 const validationSchema = yup.object().shape({
    email: yup.string().email('Please enter a valid email').required('Email is required'),
@@ -31,10 +31,10 @@ export const Form = () => {
                   handleChange={handleChange('email')}
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
-                  value={values?.email}
+                  value={values.email}
                   placeholder={'Email'}
                   boole={touched.email && errors.email}
-                  errors={errors}
+                  errors={errors.email}
                   isFocused={isFocused}
                   keyboardType={'email-address'}
                   autoCapitalize={'none'}
@@ -43,35 +43,20 @@ export const Form = () => {
                   handleChange={handleChange('password')}
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
-                  value={values?.password}
+                  value={values.password}
                   boole={touched.password && errors.password}
-                  errors={errors}
+                  errors={errors.password}
                   isFocused={isFocused}
                   autoCapitalize={'none'}
                   placeholder={'Password'}
                   secureTextEntry={true}
                />
-               <Button title="Submit" onPress={handleSubmit}/>
+               <Button
+                  style={{marginTop: 42}}
+                  text={'Зареєструватися'}
+               />
             </Container>
          )}
       </Formik>
    )
 }
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-   },
-   input: {
-      height: 40,
-      width: '90%',
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-   },
-   error: {
-      color: 'red',
-   },
-});

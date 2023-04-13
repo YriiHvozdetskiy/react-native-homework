@@ -33,7 +33,7 @@ export const Input = (props) => {
             keyboardType={keyboardType}
             secureTextEntry={isPasswordVisible}
          />
-         {boole && <ErrorText>{errors.email}</ErrorText>}
+         {boole && <ErrorText>{errors}</ErrorText>}
       </Container>
    )
 }
