@@ -3,15 +3,19 @@ import {
    Wrapper,
 } from './styled';
 import {Formik} from 'formik';
-import * as yup from 'yup';
 import {Input} from '@components/Input';
 import {Button} from '@components/Button';
 import {Keyboard} from 'react-native';
+import {validationSchema} from '../../utils';
+import * as yup from 'yup';
 
-const validationSchema = yup.object().shape({
-   email: yup.string().email('Please enter a valid email').required('Email is required'),
-   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-});
+
+const initialValues = {
+   email: '',
+   password: '',
+   login: '',
+}
+
 
 export const Form = (props) => {
    const {
@@ -19,14 +23,12 @@ export const Form = (props) => {
       setIsShowKeyboard,
    } = props
 
-   const handleSubmit = (values, {resetForm}) => {
+   const handleSubmit = async (values) => {
       console.log(values);
 
-      setIsShowKeyboard(prevState => !prevState)
+     await setIsShowKeyboard(prevState => !prevState)
 
       Keyboard.dismiss();
-
-      resetForm()
    };
    const keyboardHiddenHandler = () => {
       Keyboard.dismiss();
@@ -35,9 +37,14 @@ export const Form = (props) => {
    return (
       <Container onPress={keyboardHiddenHandler}>
          <Formik
-            initialValues={{email: '', password: ''}}
+            initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={validationSchema}
+            validationSchema={
+               yup.object({
+                  login: validationSchema.login,
+                  email: validationSchema.email,
+                  password: validationSchema.password,
+               })}
          >
             {({
                  handleChange,
