@@ -20,7 +20,7 @@ export const ErrorText = styled.Text`
   color: red;
 `
 
-export const ShowPassword = styled.Text`
+export const ToggleSecureText = styled.Text`
   position: absolute;
   top: 30%;
   right: 16px;

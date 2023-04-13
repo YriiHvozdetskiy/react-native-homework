@@ -1,7 +1,7 @@
 import {
    Container,
-   ErrorText, ShowPassword,
-   StyledTextInput,
+   ErrorText,
+   StyledTextInput, ToggleSecureText,
 
 } from './styled';
 import React, {useState} from 'react';
@@ -45,14 +45,13 @@ export const Input = (props) => {
             keyboardType={keyboardType}
             secureTextEntry={isPasswordVisible}
          />
+         {/*/TODO додати падінги і зроби помилки абсолютом*/}
          {boole && <ErrorText>{errors}</ErrorText>}
 
          {secureTextEntry && value?.length > 0 &&
-            <ShowPassword
-               onPress={toggleSecureEntry}
-            >
+            <ToggleSecureText onPress={toggleSecureEntry}>
                {isPasswordVisible ? 'Показати' : 'Сховати'}
-            </ShowPassword>}
+            </ToggleSecureText>}
       </Container>
    )
 }
