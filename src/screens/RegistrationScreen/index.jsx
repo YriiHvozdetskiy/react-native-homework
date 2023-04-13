@@ -14,6 +14,8 @@ import {Form} from '@components/Form';
 import {Title} from '@components/Title';
 import React, {useState} from 'react';
 import {RegistrationScreenList} from '@screens/RegistrationScreen/mock';
+import * as yup from 'yup';
+import {validationSchema} from '../../utils';
 
 export const RegistrationScreen = () => {
 
@@ -21,7 +23,12 @@ export const RegistrationScreen = () => {
    const keyboardHiddenHandler = () => {
       Keyboard.dismiss();
    };
-console.log('IsShowKeyboard',IsShowKeyboard)
+
+   const handleSubmit = async (values) => {
+      console.log(values);
+
+      Keyboard.dismiss();
+   };
 
    return (
       <Container>
@@ -37,8 +44,22 @@ console.log('IsShowKeyboard',IsShowKeyboard)
                            text={'Реєстрація'}
                         />
                         <Form
+                           validationSchema={
+                              yup.object({
+                                 login: validationSchema.login,
+                                 email: validationSchema.email,
+                                 password: validationSchema.password,
+                                 confirm_password: validationSchema.confirm_password,
+                              })}
+                           initialValues={{
+                              login: '',
+                              email: '',
+                              password: '',
+                              confirm_password: '',
+                           }}
                            setIsShowKeyboard={setIsShowKeyboard}
                            inputList={RegistrationScreenList}
+                           handleSubmit={handleSubmit}
                         />
                         <TextLink>
                            Вже є обліковий запис? Вхід

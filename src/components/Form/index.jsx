@@ -6,27 +6,16 @@ import {Formik} from 'formik';
 import {Input} from '@components/Input';
 import {Button} from '@components/Button';
 import {Keyboard} from 'react-native';
-import {validationSchema} from '../../utils';
-import * as yup from 'yup';
-
-const initialValues = {
-   login: '',
-   email: '',
-   password: '',
-   confirm_password: '',
-}
 
 export const Form = (props) => {
    const {
       inputList,
       setIsShowKeyboard,
+      initialValues,
+      validationSchema,
+      handleSubmit,
    } = props
 
-   const handleSubmit = async (values) => {
-      console.log(values);
-
-      Keyboard.dismiss();
-   };
    const keyboardHiddenHandler = () => {
       Keyboard.dismiss();
    };
@@ -36,13 +25,7 @@ export const Form = (props) => {
          <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={
-               yup.object({
-                  login: validationSchema.login,
-                  email: validationSchema.email,
-                  password: validationSchema.password,
-                  confirm_password: validationSchema.confirm_password,
-               })}
+            validationSchema={validationSchema}
          >
             {({
                  handleChange,
