@@ -1,5 +1,8 @@
 import {
-   Container, ErrorText, StyledTextInput,
+   Container,
+   ErrorText, ShowPassword,
+   StyledTextInput,
+
 } from './styled';
 import React, {useState} from 'react';
 
@@ -19,6 +22,9 @@ export const Input = (props) => {
    const [isPasswordVisible, setIsPasswordVisible] = useState(secureTextEntry);
    const [isFocused, setIsFocused] = useState(false);
 
+   const toggleSecureEntry = () => {
+      setIsPasswordVisible(prev => !prev);
+   };
 
    return (
       <Container>
@@ -39,8 +45,14 @@ export const Input = (props) => {
             keyboardType={keyboardType}
             secureTextEntry={isPasswordVisible}
          />
-         {boole && <ErrorText>{errors}</ErrorText>
-         }
+         {boole && <ErrorText>{errors}</ErrorText>}
+
+         {secureTextEntry && value?.length > 0 &&
+            <ShowPassword
+               onPress={toggleSecureEntry}
+            >
+               {isPasswordVisible ? 'Показати' : 'Сховати'}
+            </ShowPassword>}
       </Container>
    )
 }

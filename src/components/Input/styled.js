@@ -1,8 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-
-
+  position: relative;
 `
 export const StyledTextInput = styled.TextInput`
   font-family: 'Roboto-Regular';
@@ -19,4 +18,14 @@ export const StyledTextInput = styled.TextInput`
 
 export const ErrorText = styled.Text`
   color: red;
+`
+
+export const ShowPassword = styled.Text`
+  position: absolute;
+  top: 30%;
+  right: 16px;
+  font-family: 'Roboto-Regular';
+  font-size: 16px;
+  line-height: 19px;
+  color: #1B4371;
 `
