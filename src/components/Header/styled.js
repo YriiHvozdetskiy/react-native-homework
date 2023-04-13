@@ -13,7 +13,6 @@ export const Title = styled.Text`
   text-align: center;
   font-size: 20px;
   margin-bottom: 20px;
-  ${(props) => props.isLastChild && 'margin-bottom: 0;'}
   color: ${(props) =>
           props.isLastChild ? '#00FF00' : '#FFFFFF'};
   padding: 5px;

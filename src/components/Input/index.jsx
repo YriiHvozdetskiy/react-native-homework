@@ -13,6 +13,7 @@ export const Input = (props) => {
       keyboardType = 'default',
       autoCapitalize,
       secureTextEntry,
+      setIsShowKeyboard,
    } = props
 
    const [isPasswordVisible, setIsPasswordVisible] = useState(secureTextEntry);
@@ -23,9 +24,14 @@ export const Input = (props) => {
       <Container>
          <StyledTextInput
             onChangeText={handleChange}
-            // onBlur={onBlur}
-            onBlur={() => setIsFocused(prevState => !prevState)}
-            onFocus={() => setIsFocused(prevState => !prevState)}
+            onBlur={() => {
+               setIsFocused(prevState => !prevState)
+               setIsShowKeyboard(prevState => !prevState)
+            }}
+            onFocus={() => {
+               setIsFocused(prevState => !prevState)
+               setIsShowKeyboard(prevState => !prevState)
+            }}
             value={value}
             placeholder={placeholder}
             isFocused={isFocused}
@@ -33,7 +39,8 @@ export const Input = (props) => {
             keyboardType={keyboardType}
             secureTextEntry={isPasswordVisible}
          />
-         {boole && <ErrorText>{errors}</ErrorText>}
+         {boole && <ErrorText>{errors}</ErrorText>
+         }
       </Container>
    )
 }

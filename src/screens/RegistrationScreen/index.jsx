@@ -12,9 +12,11 @@ import {
 } from 'react-native';
 import {Form} from '@components/Form';
 import {Title} from '@components/Title';
-import React from 'react';
+import React, {useState} from 'react';
 
 export const RegistrationScreen = () => {
+
+   const [IsShowKeyboard, setIsShowKeyboard] = useState(true);
    const keyboardHiddenHandler = () => {
       // setIsShowKeyboard(false);
       Keyboard.dismiss();
@@ -28,12 +30,12 @@ export const RegistrationScreen = () => {
                   <KeyboardAvoidingView
                      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                      style={{width: '100%'}}>
-                     <Wrapper>
+                     <Wrapper IsShowKeyboard={IsShowKeyboard}>
                         <Title
                            style={{marginBottom: 32}}
                            text={'Реєстрація'}
                         />
-                        <Form/>
+                        <Form setIsShowKeyboard={setIsShowKeyboard}/>
                         <TextLink>
                            Вже є обліковий запис? Вхід
                         </TextLink>

@@ -13,9 +13,14 @@ const validationSchema = yup.object().shape({
    password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-export const Form = () => {
+export const Form = ({setIsShowKeyboard}) => {
    const handleSubmit = (values, {resetForm}) => {
       console.log(values);
+
+      setIsShowKeyboard(prevState => !prevState)
+
+      Keyboard.dismiss();
+
       resetForm()
    };
    const keyboardHiddenHandler = () => {
@@ -28,7 +33,7 @@ export const Form = () => {
          <Formik
             initialValues={{email: '', password: ''}}
             onSubmit={handleSubmit}
-            // validationSchema={validationSchema}
+            validationSchema={validationSchema}
          >
             {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
                <Wrapper>
@@ -40,6 +45,7 @@ export const Form = () => {
                      errors={errors.email}
                      keyboardType={'email-address'}
                      autoCapitalize={'none'}
+                     setIsShowKeyboard={setIsShowKeyboard}
                   />
                   <Input
                      handleChange={handleChange('password')}
@@ -49,6 +55,7 @@ export const Form = () => {
                      autoCapitalize={'none'}
                      placeholder={'Password'}
                      secureTextEntry={true}
+                     setIsShowKeyboard={setIsShowKeyboard}
                   />
                   <Button
                      style={{marginTop: 42}} // TODO така стилізація кнопки норм ?
