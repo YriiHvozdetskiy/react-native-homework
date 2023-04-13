@@ -1,5 +1,8 @@
 import {
-   Container, StyledBackground, Wrapper,
+   Container,
+   StyledBackground,
+   TextLink,
+   Wrapper,
 } from './styled';
 import {
    Keyboard,
@@ -24,23 +27,26 @@ export const RegistrationScreen = () => {
             onPress={keyboardHiddenHandler}
          >
             <StyledBackground source={require('../../assets/photo-bg.jpg')}>
-               <KeyboardAvoidingView
-                  behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-                  style={{
-                     // flex: 1,
-                     justifyContent: 'flex-end',
-                     borderColor: 'tomato',
-                     borderStyle: 'solid',
-                     borderWidth: 1,
-                     // height:'100%'
-                     width:'100%'
-                  }}
+
+               <TouchableWithoutFeedback
+                  onPress={keyboardHiddenHandler}
                >
-                  <Wrapper>
-                     <Title text={'Реєстрація'} distance={32}/>
-                     <Form/>
-                  </Wrapper>
-               </KeyboardAvoidingView>
+                  <KeyboardAvoidingView
+                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                     style={{
+                        // flex: 1,
+                        // justifyContent: 'flex-end',
+                        // borderColor: 'tomato',
+                        // borderStyle: 'solid',
+                        // borderWidth: 1,
+                        // // // // height:'100%'
+                        width: '100%',
+                     }}>
+                     <Wrapper>
+                        <Form/>
+                     </Wrapper>
+                  </KeyboardAvoidingView>
+               </TouchableWithoutFeedback>
             </StyledBackground>
          </TouchableWithoutFeedback>
       </Container>

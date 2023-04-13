@@ -6,26 +6,26 @@ import React, {useState} from 'react';
 export const Input = (props) => {
    const {
       handleChange,
-      onFocus,
-      onBlur,
       value,
       placeholder,
       boole,
       errors,
-      isFocused,
       keyboardType = 'default',
       autoCapitalize,
       secureTextEntry,
    } = props
 
    const [isPasswordVisible, setIsPasswordVisible] = useState(secureTextEntry);
+   const [isFocused, setIsFocused] = useState(false);
+
 
    return (
       <Container>
          <StyledTextInput
             onChangeText={handleChange}
-            onBlur={onBlur}
-            onFocus={onFocus}
+            // onBlur={onBlur}
+            onBlur={() => setIsFocused(prevState => !prevState)}
+            onFocus={() => setIsFocused(prevState => !prevState)}
             value={value}
             placeholder={placeholder}
             isFocused={isFocused}

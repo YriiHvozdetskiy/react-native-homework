@@ -8,7 +8,5 @@ export const TitleText = styled.Text`
   line-height: 35px;
   text-align: center;
   color: #212121;
-  margin-bottom: ${(props) =>
-          props.distance ? `${props.distance}px` : '0px'};
 `;
 
