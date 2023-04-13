@@ -20,30 +20,23 @@ export const RegistrationScreen = () => {
       Keyboard.dismiss();
    };
 
-
    return (
       <Container>
-         <TouchableWithoutFeedback
-            onPress={keyboardHiddenHandler}
-         >
+         <TouchableWithoutFeedback onPress={keyboardHiddenHandler}>
             <StyledBackground source={require('../../assets/photo-bg.jpg')}>
-
-               <TouchableWithoutFeedback
-                  onPress={keyboardHiddenHandler}
-               >
+               <TouchableWithoutFeedback onPress={keyboardHiddenHandler}>
                   <KeyboardAvoidingView
                      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                     style={{
-                        // flex: 1,
-                        // justifyContent: 'flex-end',
-                        // borderColor: 'tomato',
-                        // borderStyle: 'solid',
-                        // borderWidth: 1,
-                        // // // // height:'100%'
-                        width: '100%',
-                     }}>
+                     style={{width: '100%'}}>
                      <Wrapper>
+                        <Title
+                           style={{marginBottom: 32}}
+                           text={'Реєстрація'}
+                        />
                         <Form/>
+                        <TextLink>
+                           Вже є обліковий запис? Вхід
+                        </TextLink>
                      </Wrapper>
                   </KeyboardAvoidingView>
                </TouchableWithoutFeedback>
