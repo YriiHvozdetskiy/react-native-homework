@@ -11,6 +11,12 @@ export const validationSchema = {
          .required('Email is required'),
    password:
       yup.string()
-         .min(6, 'Password must be at least 6 characters')
+         .trim('fill in the field')
+         .min(3, 'Password must be at least 3 characters')
          .required('Password is required'),
+   confirm_password:
+      yup.string()
+         .oneOf([yup.ref('password'), null], "Passwords don't match!")
+         .trim('fill in the field')
+         .min(3, 'minimum 3 character'),
 };

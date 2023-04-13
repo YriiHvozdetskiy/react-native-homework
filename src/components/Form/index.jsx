@@ -9,13 +9,12 @@ import {Keyboard} from 'react-native';
 import {validationSchema} from '../../utils';
 import * as yup from 'yup';
 
-
 const initialValues = {
+   login: '',
    email: '',
    password: '',
-   login: '',
+   confirm_password: '',
 }
-
 
 export const Form = (props) => {
    const {
@@ -26,7 +25,7 @@ export const Form = (props) => {
    const handleSubmit = async (values) => {
       console.log(values);
 
-     await setIsShowKeyboard(prevState => !prevState)
+      await setIsShowKeyboard(prevState => !prevState)
 
       Keyboard.dismiss();
    };
@@ -44,6 +43,7 @@ export const Form = (props) => {
                   login: validationSchema.login,
                   email: validationSchema.email,
                   password: validationSchema.password,
+                  confirm_password: validationSchema.confirm_password,
                })}
          >
             {({
@@ -69,7 +69,7 @@ export const Form = (props) => {
                      />
                   ))}
                   <Button
-                     style={{marginTop: 42}} // TODO така стилізація кнопки норм ?
+                     style={{marginTop: 42}}
                      text={'Зареєструватися'}
                      handlePress={handleSubmit}
                   />

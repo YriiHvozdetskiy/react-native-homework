@@ -20,4 +20,11 @@ export const RegistrationScreenList = [
       capitalize: 'none',
       secureTextEntry: true,
    },
+   {
+      name: 'confirm_password',
+      placeholder: 'Confirm password',
+      type: 'default',
+      capitalize: 'none',
+      secureTextEntry: true,
+   },
 ]
