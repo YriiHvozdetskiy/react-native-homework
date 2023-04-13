@@ -13,7 +13,12 @@ const validationSchema = yup.object().shape({
    password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-export const Form = ({setIsShowKeyboard}) => {
+export const Form = (props) => {
+   const {
+      inputList,
+      setIsShowKeyboard,
+   } = props
+
    const handleSubmit = (values, {resetForm}) => {
       console.log(values);
 
@@ -24,7 +29,6 @@ export const Form = ({setIsShowKeyboard}) => {
       resetForm()
    };
    const keyboardHiddenHandler = () => {
-      // setIsShowKeyboard(false);
       Keyboard.dismiss();
    };
 
@@ -35,28 +39,28 @@ export const Form = ({setIsShowKeyboard}) => {
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
          >
-            {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+            {({
+                 handleChange,
+                 handleSubmit,
+                 values,
+                 errors,
+                 touched,
+              }) => (
                <Wrapper>
-                  <Input
-                     handleChange={handleChange('email')}
-                     value={values.email}
-                     placeholder={'Email'}
-                     boole={touched.email && errors.email}
-                     errors={errors.email}
-                     keyboardType={'email-address'}
-                     autoCapitalize={'none'}
-                     setIsShowKeyboard={setIsShowKeyboard}
-                  />
-                  <Input
-                     handleChange={handleChange('password')}
-                     value={values.password}
-                     boole={touched.password && errors.password}
-                     errors={errors.password}
-                     autoCapitalize={'none'}
-                     placeholder={'Password'}
-                     secureTextEntry={true}
-                     setIsShowKeyboard={setIsShowKeyboard}
-                  />
+                  {inputList.map((field, index) => (
+                     <Input
+                        key={index}
+                        handleChange={handleChange(field.name)}
+                        value={values[field.name]}
+                        placeholder={field.placeholder}
+                        boole={touched[field.name] && errors[field.name]}
+                        errors={errors[field.name]}
+                        keyboardType={field.type}
+                        autoCapitalize={field.capitalize}
+                        secureTextEntry={field.secureTextEntry}
+                        setIsShowKeyboard={setIsShowKeyboard}
+                     />
+                  ))}
                   <Button
                      style={{marginTop: 42}} // TODO така стилізація кнопки норм ?
                      text={'Зареєструватися'}

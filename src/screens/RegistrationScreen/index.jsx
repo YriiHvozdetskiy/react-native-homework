@@ -13,12 +13,12 @@ import {
 import {Form} from '@components/Form';
 import {Title} from '@components/Title';
 import React, {useState} from 'react';
+import {RegistrationScreenList} from '@screens/RegistrationScreen/mock';
 
 export const RegistrationScreen = () => {
 
    const [IsShowKeyboard, setIsShowKeyboard] = useState(true);
    const keyboardHiddenHandler = () => {
-      // setIsShowKeyboard(false);
       Keyboard.dismiss();
    };
 
@@ -35,7 +35,10 @@ export const RegistrationScreen = () => {
                            style={{marginBottom: 32}}
                            text={'Реєстрація'}
                         />
-                        <Form setIsShowKeyboard={setIsShowKeyboard}/>
+                        <Form
+                           setIsShowKeyboard={setIsShowKeyboard}
+                           inputList={RegistrationScreenList}
+                        />
                         <TextLink>
                            Вже є обліковий запис? Вхід
                         </TextLink>
