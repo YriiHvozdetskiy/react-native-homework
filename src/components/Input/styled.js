@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   position: relative;
+  padding-bottom: 16px;
 `
 export const StyledTextInput = styled.TextInput`
   font-family: 'Roboto-Regular';
@@ -18,6 +19,9 @@ export const StyledTextInput = styled.TextInput`
 
 export const ErrorText = styled.Text`
   color: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `
 
 export const ToggleSecureText = styled.Text`
