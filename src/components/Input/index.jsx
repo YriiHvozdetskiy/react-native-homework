@@ -46,12 +46,15 @@ export const Input = (props) => {
             secureTextEntry={isPasswordVisible}
          />
          {/*/TODO додати падінги і зроби помилки абсолютом*/}
-         {boole && <ErrorText>{errors}</ErrorText>}
+         {boole && (
+            <ErrorText>{errors}</ErrorText>
+         )}
 
-         {secureTextEntry && value?.length > 0 &&
+         {secureTextEntry && value?.length > 0 && (
             <ToggleSecureText onPress={toggleSecureEntry}>
                {isPasswordVisible ? 'Показати' : 'Сховати'}
-            </ToggleSecureText>}
+            </ToggleSecureText>
+         )}
       </Container>
    )
 }

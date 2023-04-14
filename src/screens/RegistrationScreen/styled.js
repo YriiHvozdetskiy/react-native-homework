@@ -27,3 +27,10 @@ export const TextLink = styled.Text`
   color: #1B4371;
   margin-top: 16px;
 `
+
+export const Picture = styled.Image`
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  background: #F6F6F6;
+`
