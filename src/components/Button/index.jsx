@@ -1,5 +1,7 @@
 import {
-   StyledButton, StyledText,
+   ButtonIcon,
+   ButtonText,
+   StyledText,
 } from './styled';
 
 export const Button = (props) => {
@@ -7,14 +9,30 @@ export const Button = (props) => {
       text,
       handlePress,
       style,
+      icon,
    } = props
 
+   const IconComponent = icon;
+
    return (
-      <StyledButton
-         style={style}
-         onPress={handlePress}
-      >
-         <StyledText>{text}</StyledText>
-      </StyledButton>
+      <>
+         {text && (
+            <ButtonText
+               style={style}
+               onPress={handlePress}
+            >
+               <StyledText>{text}</StyledText>
+            </ButtonText>
+         )}
+
+         {icon && (
+            <ButtonIcon
+               style={style}
+               onPress={handlePress}
+            >
+               <IconComponent/>
+            </ButtonIcon>
+         )}
+      </>
    )
 }

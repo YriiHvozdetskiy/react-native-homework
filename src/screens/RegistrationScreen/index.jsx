@@ -1,4 +1,5 @@
 import {
+   Box,
    Container,
    Picture,
    StyledBackground,
@@ -6,11 +7,10 @@ import {
    Wrapper,
 } from './styled';
 import {
-   Button,
    Keyboard,
    KeyboardAvoidingView,
-   Platform,
-   TouchableWithoutFeedback,
+   Platform, TouchableOpacity,
+   TouchableWithoutFeedback, View,
 } from 'react-native';
 import {Form} from '@components/Form';
 import {Title} from '@components/Title';
@@ -19,6 +19,8 @@ import {RegistrationScreenList} from '@screens/RegistrationScreen/mock';
 import * as yup from 'yup';
 import {validationSchema} from '../../utils';
 import * as ImagePicker from 'expo-image-picker';
+import {AddPhoto} from '../../assets/icons';
+import {Button} from '@components/Button';
 
 export const RegistrationScreen = () => {
 
@@ -53,21 +55,30 @@ export const RegistrationScreen = () => {
    return (
       <Container>
          <TouchableWithoutFeedback onPress={keyboardHiddenHandler}>
-            <StyledBackground source={require('../../assets/photo-bg.jpg')}>
+            <StyledBackground source={require('../../assets/images/photo-bg.jpg')}>
                <TouchableWithoutFeedback onPress={keyboardHiddenHandler}>
                   <KeyboardAvoidingView
                      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                      style={{width: '100%'}}>
                      <Wrapper IsShowKeyboard={IsShowKeyboard}>
-                        <Button
-                           title="Pick an image from camera roll"
-                           onPress={handlePickImage}
-                        />
-                        <Picture
-                           source={imageUri
-                              ? {uri: imageUri}
-                              : require('../../assets/mob-defaul-bg.jpg')}
-                        />
+                        <Box
+                           style={{transform: [{translateX: -50}, {translateY: -60}]}}
+                        >
+                           <Picture
+                              source={imageUri
+                                 ? {uri: imageUri}
+                                 : require('../../assets/images/mob-defaul-bg.jpg')}
+                           />
+                           <Button
+                              style={{
+                                 position: 'absolute',
+                                 bottom: 14,
+                                 right: -12,
+                              }}
+                              handlePress={handlePickImage}
+                              icon={AddPhoto}
+                           />
+                        </Box>
                         <Title
                            style={{marginBottom: 32}}
                            text={'Реєстрація'}

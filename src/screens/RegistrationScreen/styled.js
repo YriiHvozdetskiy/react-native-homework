@@ -11,6 +11,7 @@ export const StyledBackground = styled.ImageBackground`
 `;
 
 export const Wrapper = styled.View`
+  position: relative;
   background: #FFFFFF;
   width: 100%;
   padding: ${(props) => props.IsShowKeyboard ? '92px 16px 80px' : '92px 16px 20px'};
@@ -33,4 +34,10 @@ export const Picture = styled.Image`
   height: 120px;
   border-radius: 16px;
   background: #F6F6F6;
+`
+
+export const Box = styled.View`
+  position: absolute;
+  top: 0;
+  left: 50%;
 `
