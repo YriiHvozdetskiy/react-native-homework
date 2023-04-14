@@ -10,6 +10,7 @@ export const Button = (props) => {
       handlePress,
       style,
       icon,
+      colorSvg,
    } = props
 
    const IconComponent = icon;
@@ -30,7 +31,7 @@ export const Button = (props) => {
                style={style}
                onPress={handlePress}
             >
-               <IconComponent/>
+               <IconComponent color={colorSvg}/>
             </ButtonIcon>
          )}
       </>

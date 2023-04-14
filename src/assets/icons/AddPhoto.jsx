@@ -1,6 +1,6 @@
 import Svg, {Circle, Path} from 'react-native-svg';
 
-export const AddPhoto = () => {
+export const AddPhoto = ({color}) => {
 
    return (
       <Svg
@@ -8,21 +8,19 @@ export const AddPhoto = () => {
          height="25"
          viewBox="0 0 25 25"
          fill="none"
-         borderWidth={2}
-         borderColor="red"
       >
          <Circle
             cx="12.5"
             cy="12.5"
             r="12"
             fill="white"
-            stroke="#FF6C00"
+            stroke={color}
          />
          <Path
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M13 6H12V12H6V13H12V19H13V13H19V12H13V6Z"
-            fill="#FF6C00"
+            fill={color}
          />
       </Svg>
    )

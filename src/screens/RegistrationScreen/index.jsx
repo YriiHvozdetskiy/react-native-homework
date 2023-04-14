@@ -9,8 +9,8 @@ import {
 import {
    Keyboard,
    KeyboardAvoidingView,
-   Platform, TouchableOpacity,
-   TouchableWithoutFeedback, View,
+   Platform,
+   TouchableWithoutFeedback,
 } from 'react-native';
 import {Form} from '@components/Form';
 import {Title} from '@components/Title';
@@ -52,6 +52,10 @@ export const RegistrationScreen = () => {
       }
    };
 
+   const handleDeleteImage = () => {
+      setImageUri(null)
+   }
+
    return (
       <Container>
          <TouchableWithoutFeedback onPress={keyboardHiddenHandler}>
@@ -69,15 +73,29 @@ export const RegistrationScreen = () => {
                                  ? {uri: imageUri}
                                  : require('../../assets/images/mob-defaul-bg.jpg')}
                            />
-                           <Button
-                              style={{
-                                 position: 'absolute',
-                                 bottom: 14,
-                                 right: -12,
-                              }}
-                              handlePress={handlePickImage}
-                              icon={AddPhoto}
-                           />
+                           {imageUri
+                              ? <Button
+                                 style={{
+                                    position: 'absolute',
+                                    bottom: 14,
+                                    right: -12,
+                                    transform: [{rotate: '-45deg'}],
+                                 }}
+                                 handlePress={handleDeleteImage}
+                                 icon={AddPhoto}
+                                 colorSvg={'#BDBDBD'}
+                              />
+                              : <Button
+                                 style={{
+                                    position: 'absolute',
+                                    bottom: 14,
+                                    right: -12,
+                                 }}
+                                 handlePress={handlePickImage}
+                                 icon={AddPhoto}
+                                 colorSvg={'#FF6C00'}
+                              />
+                           }
                         </Box>
                         <Title
                            style={{marginBottom: 32}}
